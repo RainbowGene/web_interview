@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dom操作</title>
+  <style>
+    .header {
+      height: 200px;
+      border: 1px solid #ccc;
+    }
+
+    .center {
+      height: 300px;
+      border: 1px solid #ccc;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .rigth_con {
+      width: 40%;
+      height: 100%;
+      border: 1px solid black;
+    }
+
+    .left_con {
+      width: 40%;
+      height: 100%;
+      border: 1px solid purple;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <div class="header"></div>
+    <div class="center">
+      <div class="rigth_con">左</div>
+      <div class="left_con">右</div>
+    </div>
+  </div>
+  <script>
+    const headernode = document.getElementsByClassName('header')
+  </script>
+</body>
+
+</html>

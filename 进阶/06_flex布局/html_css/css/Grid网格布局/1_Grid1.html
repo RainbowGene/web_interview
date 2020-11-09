@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Grid网格布局</title>
+  <style>
+  #box{width: 500px;height: 500px;border: 1px solid black;display: grid;
+  /* 1 , grid-template-rows 和 grid-template-rows */
+    /* grid-template-rows:100px auto 25%;grid-template-columns:100px 100px 200px 100px;} */
+    /* grid-template-rows:1fr 1fr 1fr 1fr;grid-template-columns:1fr 1fr 1fr; */
+
+    /* 如果要多行多列，可以用简便写法: repeat() */
+    grid-template-rows:repeat(4,1fr);
+    grid-template-columns:repeat(3,1fr) ;
+    }
+
+    #box div{border: 1px solid black;}
+
+  /* 2，grid-template-areas: 区域划分:不允许出现特殊图形，要是矩形  */
+    #box2{width: 500px;height: 500px;border: 1px solid black;display: grid;
+    /* grid-template-rows:repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr) ;
+    grid-template-areas: "a1 a1 a1" 
+                         "a2 a2 a3"
+                         "a2 a2 a3"; */
+
+    /* grid-template 复合写法完成区域划分 */
+      grid-template: 
+      "a1 a1 a1" 1fr
+      "a2 a2 a3" 1fr
+      "a2 a2 a3" 1fr
+      /1fr 1fr 1fr;
+
+    /* grid-gap:是 grid-row-gap 和 grid-column-gap 的集成写法 */
+    grid-gap: 20px 10px;
+
+    /* justify-items 使用之后网格根据内容撑开，不会拉伸,下面表示内容在每个网格的最中间 */
+    /* justify-items: center;
+    align-items: center; */
+    /* place-items 简写上诉两项 */
+    place-items: center center;
+
+    /* justify-content 和 align-center
+      前者指定了 网格元素的水平分布方式，后者指定网格内容的水平分布方式
+      要想看到效果，网格改成固定宽高而不是 fr 单位
+     */
+    /* justify-content: center;
+    align-content: center; */
+    /* place-content 简写 */
+    place-content: center center;
+    }
+    #box2 div{border: 1px solid black;}
+    #box2 div:nth-child(1){grid-area: a1;}
+    #box2 div:nth-child(2){grid-area: a2;}
+    #box2 div:nth-child(3){grid-area: a3;}
+  </style>
+</head>
+<body>
+  <!-- <div id="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+    <div>7</div>
+    <div>8</div>
+    <div>9</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+  </div> -->
+
+  <div id="box2">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div> 
+</body>
+</html>

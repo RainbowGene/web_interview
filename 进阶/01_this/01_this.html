@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * 传统语言中 this 表示当前对象本身，js中有所不同
+     * es 规范描述：this 为当前执行环境的 ThisBinding
+     * MDN 描述：绝大多数情况下，函数的调用方式决定 this
+     * 
+     * 理解： this 指向由调用决定，而不是创建时决定
+     */
+
+    // function baz() {
+    //   console.log("baz");
+    //   bar();
+    // }
+    // function bar() {
+    //   console.log("bar");
+    //   foo();
+    // }
+    // function foo() {
+    //   console.log("foo");
+    // }
+    // baz();
+
+    /**
+     * baz() 调用位置在 全局作用域中
+     * bar() 调用位置在 baz()中
+     * foo() 调用位置在 bar()中
+     * 
+     * 函数的调用位置：当前正在执行函数的前一个调用中
+     */
+
+    /**
+     * 2 全局上下文（浏览器中）
+     *  this 等于 window
+     *  var === .this === .window
+     */
+
+    // 浏览器中
+    // console.log(window === this)
+    // var a = 1;
+    // this.b = 2;
+    // window.c = 3;
+    // console.log(a + b + c); // 6
+
+    /**
+     * 3 函数上下文
+     */
+
+    function abc() {
+      return this
+    }
+    console.log(abc() === window) // true
+
+    /**
+     * 4 call()、apply()
+     */
+    var person = {
+      name: "axuebin",
+      age: 25
+    };
+    function say(job) {
+      console.log(this.name + ":" + this.age + " " + job);
+    }
+    say('FE') // :undefined FE
+    say.call(person, 'FE')
+    say.apply(person, ['FE'])
+
+    /**
+     * 直接调用 say,是没有name/age的，而 call/apply 方法中的this指向了 person 对象
+     */
+
+    /**
+     * 5 bind():this将永远绑定到 bind 的第一个参数
+     */
+    var f = say.bind(person) // 打印 axuebin:25
+    console.log(f()) // 打印 undefined
+
+    /**
+     * 6 箭头函数：没有自己的this，都指向外层
+     */
+
+    /**
+     * 7 作为对象中的一个方法
+     */
+
+    var person = {
+      name: "axuebin",
+      getName: function () {
+        return this.name;
+      }
+    }
+    console.log(person.getName()); // axuebin  return "axuebin" 调用时指向的是对象中的name
+
+    var name = "xb";
+    var person = {
+      name: "axuebin",
+      getName: function () {
+        return this.name;
+      }
+    }
+    var getName = person.getName; // getName = this.name
+    console.log(getName()); // xb  调用时this指向了全局上下文
+
+
+    /**
+     * 8 作为构造函数 this被绑定到正在构造的新对象。
+     *  1 创建新对象
+        2 将this指向这个对象
+        3 给对象赋值（属性、方法）
+        4 返回this
+      所以this就是指向创建的这个对象上。
+     */
+    function Person(name) {
+      this.name = name;
+      this.age = 25;
+      this.say = function () {
+        console.log(this.name + ":" + this.age);
+      }
+    }
+    var person = new Person("axuebin");
+    console.log(person.name); // axuebin
+    person.say(); // axuebin:25
+
+    /**
+     * 9 作为一个DOM事件处理函数
+     *  this指向触发事件的元素，也就是始事件处理程序所绑定到的DOM节点。
+     */
+    // var ele = document.getElementById("id");
+    // ele.addEventListener("click", function (e) {
+    //   console.log(this);
+    //   console.log(this === e.target); // true
+    // })
+
+    /**
+     * 10 HTML标签内联事件处理函数 this指向所在的DOM元素
+     */
+    // <button onclick="console.log(this);">Click Me</button>
+
+    /**
+     * jQuery的this: 多数情况下指向DOM 元素节点
+     */
+  </script>
+</body>
+
+</html>

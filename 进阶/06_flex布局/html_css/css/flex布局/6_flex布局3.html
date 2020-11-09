@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* align-items:子项相对于容器在侧轴方向上的对齐方式
+        取值 ： stretch : 默认值，子项拉伸
+                flex-start : 容器顶部对齐
+                flex-end : 底部对齐
+                center : 垂直居中对齐
+
+        align-center:如果所有flex子项只有一行，那么该属性无效果
+          取值 : stretch ：默认值，等比例拉伸
+                 flex-start : 起始位置对齐
+                 flex-end : 结束位置对齐
+                 center : 居中对齐
+                 space-around : 环绕，每个flex子项各自获得均分的空白区域
+                 sapce-evenly : 每个flex子项两侧的空白间距完全相等
+     */
+     #box{width: 300px;height:300px;margin: 20px auto;border: 1px solid black;
+          display: flex;flex-wrap:wrap;align-items: flex-end;
+          align-items: center;}
+     #box div{width: 50px; background-color: red;}
+     /* 如果子项中不定义 height ，子项就会继承整个盒子（父容器）的高度 */
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div>测试文本</div>
+    <div>测试文本测试文本</div>
+    <div>测试文本测试文本测试文本</div>
+    <div>测试文本测试文本测试文本</div>
+    <div>测试文本</div>
+    <div>测试文本测试文本测试文本</div>
+    <div>测试文本测试文本测试文本</div>
+    <div>测试文本</div>
+    <div>测试文本测试文本测试文本</div>
+    <div>测试文本测试文本测试文本</div>
+    <div>测试文本</div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    /* 
+      flex-flow ： 是 flex-direction 和 flex-wrap 的缩写
+        第一个值是flow流动特性，第二个值是是否换行
+     */
+    /* #box{width: 300px;height: 300px;border: 1px solid black;margin: 20px auto;display:flex;flex-flow: column wrap;}
+    #box div{width: 50px;height: 50px;color: while;background-color: red;} */
+
+    /* justify-content : 决定了主轴方向上子项的对齐和分布方式
+        取值：1）默认值: flex-start : 起始位置对齐
+              2) flex-end : 结束位置对齐
+              3) center ： 居中对齐
+              4) space-between : 两端对齐，多余的空白间距只在元素中间区域分配
+              5) space-around : 环绕，每个flex子项各自获得均分的空白区域
+              6) sapce-evenly : 每个flex子项两侧的空白间距完全相等
+     */
+    #box3{width: 300px;height: 300px;border: 1px solid black;margin: 20px auto;display:flex;flex-flow: row wrap;justify-content:space-evenly ;}
+    #box3 div{width: 50px;height: 50px;color: while;background-color: red;margin: 0 0;}
+  </style>
+</head>
+<body>
+  <!-- <div id="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div> -->
+
+  <div id="box3">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+</body>
+</html>

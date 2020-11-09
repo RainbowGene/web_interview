@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: grid;
+      place-items: center;
+    }
+
+    .flex_contain {
+      height: 400px;
+      width: 400px;
+      border: 1px solid pink;
+
+      /* 水平垂直居中 1 */
+      /* display: inline-flex;
+      justify-content: center;
+      align-items: center; */
+
+
+      /* 水平垂直居中 2 */
+      /* display: inline-flex;
+      justify-content: center; */
+
+      /* 水平垂直居中3 */
+      /* display: flex;
+      place-content: center;
+      place-items: center; */
+
+
+      /* 水平垂直居中4 :前提是只有一个子元素 */
+      display: flex;
+    }
+
+    /*  */
+    .flex_item {
+      width: 100px;
+      height: 100px;
+      background: aquamarine;
+
+      /* 水平垂直居中 2 */
+      /* align-self: center; */
+
+      /* 水平垂直居中4 */
+      margin: auto;
+    }
+
+    /* 其实place-content是align-content和justify-content的简写属性；而place-items
+    是align-items和justify-items的简写属性 
+      即  box{
+            place-content:center;
+            place-items:center;
+          }
+      等同于
+          box{
+            align-content:center;
+            justify-content:center;
+
+            align-items:center;
+            justify-items:center;
+          }
+    */
+  </style>
+</head>
+
+<body>
+  <div class="flex_contain">
+    <div class="flex_item"></div>
+  </div>
+</body>
+
+</html>

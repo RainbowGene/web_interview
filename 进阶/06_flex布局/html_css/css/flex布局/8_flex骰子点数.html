@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>骰子点数</title>
+  <style>
+    #box1{width:100px;height: 100px;border: 1px solid black;border-radius: 5px;display: flex;
+      justify-content: center;align-items: center;}
+    #box1 div{width: 30%;height: 30%;background-color: black;border-radius: 50%;}
+
+    #box2{width:100px;height: 100px;border: 1px solid black;border-radius: 5px;display: flex;
+      justify-content: space-evenly;}
+    #box2 div{width: 30%;height: 30%;background-color: black;border-radius: 50%;margin: 10px;}
+    #box2 div:last-child{align-self: flex-end;}
+
+    #box3{width:100px;height: 100px;border: 1px solid black;border-radius: 5px;display: flex;
+      justify-content: space-between;align-items: center;}
+    #box3 div{width: 30%;height: 30%;background-color: black;border-radius: 50%;margin: 2px;}
+    #box3 div:first-child{align-self: flex-start;}
+    #box3 div:last-child{align-self: flex-end;}
+
+    #box4{width:100px;height: 100px;border: 1px solid black;border-radius: 5px;display: flex;
+      flex-wrap: wrap;}
+    #box4 i{width: 30%;height: 30%;background-color: black;border-radius: 50%;margin: 10%;}
+
+    
+    #box5{width:100px;height: 100px;border: 1px solid black;border-radius: 5px;display: flex;
+      flex-wrap: wrap;}
+    #box5 i{width: 25%;height: 25%;background-color: black;border-radius: 50%;margin: 12%;}
+    #box5 .box5i{position:relative;left: 25px;bottom: 75px;}
+    
+    #box6{width:100px;height: 100px;border: 1px solid black;border-radius: 5px;display: flex;
+      flex-wrap: wrap;}
+    #box6 i{width: 25%;height: 25%;background-color: black;border-radius: 50%;margin: 4% 12%;}
+  </style>
+</head>
+<body>
+  <div id="box1">
+    <div></div>
+  </div>
+  <div id="box2">
+    <div></div>
+    <div></div>
+  </div>
+  <div id="box3">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <div id="box4">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+  </div>
+  <div id="box5">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i class="box5i"></i class="box5i">
+  </div>
+  <div id="box6">
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+      <i></i>
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 在这里用link标签引入中文布局 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chinese-layout">
+
+  <!-- 在这里用link标签引入中文渐变色 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chinese-gradient">
+  <style>
+    /* 清除默认样式 */
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    /* 令html和body全屏显示 */
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      /* 先在父元素上设置grid布局 */
+      display: grid;
+      grid: var(--居中);
+
+      /* 给个好看的渐变色 */
+      background: var(--霾灰);
+    }
+
+    .center {
+      /* 指定子元素在中心位置 */
+      grid-area: 中;
+
+      /* 给子元素设置宽高，不然宽高为0导致什么也看不见 */
+      width: 150px;
+      height: 150px;
+
+      /* 给一个好看的背景色 */
+      background: var(--夏日缤纷);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="center"></div>
+</body>
+
+</html>

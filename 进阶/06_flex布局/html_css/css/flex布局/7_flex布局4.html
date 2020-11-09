@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>flex布局4</title>
+  <style>
+    /* 作用在flex子项上的属性
+      order: 改变flex子项的排序位置,默认为0. 值越大越往后排
+      flex-grow:扩展宽度，默认值为0
+      flex-shrink : 收缩，当flex容器空间不足时，单个元素的收缩比例，默认为1,0表示不收缩
+      flex-basis ： 定义了在分配剩余空间之前元素的默认大小 px 固定值,优先级高于 width
+      flex ： flex-grow flex-shrink flex-basis 的缩写
+      align-selt:指单独控制某一个flex子项的垂直对齐方式
+   */
+    #box {width: 300px;height: 300px;border: 1px solid black; display: flex;margin: 20px auto;}
+    #box div {width: 50px;height: 50px;background-color:red;text-align: center;line-height: 50px;}
+
+    /* #box div:nth-child(2){order: 1;} */
+    #box div:nth-child(2) {background-color: yellow;flex-grow: 1;}
+    /*1表示占满所有剩余的空白空间, 0.5只占剩余的一半*/
+
+    #box2 {width: 300px;height: 300px;border: 1px solid black; display: flex;margin: 20px auto;}
+    #box2 div {width: 50px;height: 50px;background-color:red;text-align: center;line-height: 50px;}
+    /* #box2 div:nth-child(2){background-color: aqua;flex-shrink: 0.5;} */
+    #box2 div:nth-child(2){background-color: aqua;flex-basis: 50px;}
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+
+  <div id="box2">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+</body>
+
+</html>

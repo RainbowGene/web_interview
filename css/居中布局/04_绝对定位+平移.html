@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background-color: gray;
+    }
+
+    body {
+      position: relative;
+    }
+
+    .center {
+      /* 宽高由内容决定 */
+
+      background-color: beige;
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      /* 不用给宽高，但是可以给个内边距防止内容与盒子过于贴合 */
+      padding: 10px;
+
+      /* 这个50%是相对于自身宽高而言的 */
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 有时中间盒子的内容是要靠后台传过来的数据决定的，如果写死的话，当数据较多时就会发生溢出，
+    数据较少时又会空出一大片，所以我们需要一种更加智能的方式来实现居中布局。
+    绝对定位 + 平移 是 绝对定位 + 负边距的改进版，那么具体都改进了哪些方面呢？
+    负边距的百分比并不是相对于自身，而是相对于父元素，所以只能写具体的像素值，显得不够智能。
+    而平移相对于自身，只需要无脑写 -50% 就可以了:
+ -->
+  <div class="center">我直接撑开</div>
+</body>
+
+</html>

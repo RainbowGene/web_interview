@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sticky Footer</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 100vw;
+      min-height: 100vh;
+      margin: 0;
+      background-color: #291642;
+      font-family: "Gochi Hand", sans-serif;
+      font-size: 100%;
+      letter-spacing: 0.1rem;
+      color: #fff;
+
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* 垂直分布，水平居中 */
+    body>*:not(script) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header {
+      background-color: #2196f3;
+      min-height: 15vh;
+    }
+
+    main {
+      background-color: #f4f4f4;
+      color: #444;
+      overflow: hidden;
+      resize: vertical;
+    }
+
+    footer {
+      min-height: 24vh;
+      background-color: #222;
+    }
+
+    /* 上外间距自适应 */
+    footer {
+      margin-top: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h2>Header</h2>
+  </header>
+  <main>
+    <h2>Main Content</h2>
+  </main>
+  <footer>
+    <h2>Footer</h2>
+  </footer>
+</body>
+
+</html>

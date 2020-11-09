@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>4_flex布局</title>
+  <style>
+    /* #parent{width: 300px;height: 300px;border: 1px solid black;margin: 20px auto;display:flex;}
+    .box{width: 100px; height: 100px; background-color: red;margin: auto;}  */
+    /* 
+      父容器固定了高度后：子项会根据高度自适应均分高度
+     */
+
+    /* flex-direction:用来控制子项整体布局方向，是从左往右还是从右往左，是从上往下还是从下往上
+        取值：
+          1) row: 默认值：水平流方向，从左往右
+          2）row-reverse ： 从右往左
+          3）column ： 从上玩下
+          4）column-reverse ： 从下往上
+
+        flex-warp: 用来控制子项整体单行显示还是换行显示
+          1)nowrap : 单行显示不换行
+          2)wrap : 宽度不足以换行显示
+          3)wrap-reverse:从下往上的宽度不足以换行显示
+     */
+    #box{width: 300px;height: 300px;border: 1px solid black;margin: 20px auto;display:flex;flex-wrap: wrap;}
+    #box div{width: 50px;height: 50px;color: while;background-color: red;}
+  </style>
+</head>
+
+<body>
+  <!-- <div id="parent">
+    <div class="box"></div>
+    <div class="box"></div>
+  </div> -->
+
+  <div id="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+</body>
+
+<script>
+  //生成随机数组
+  const arr = new Array(20)
+  for (let i = 0; i < arr.length; i++) {
+    arr[i] = Math.round(Math.random() * 10)
+  }
+
+  const str = 'asdhiabfhabdaldhua'
+
+  console.log(arr)
+
+  //计算arr中num出现的次数
+  function getArrCount(arr, num) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] == num) {
+        count++
+      }
+    }
+    console.log(count)
+  }
+  function getStrCount(str, char) {
+    let count = 0;
+    for (let i = 0; i < str.length; i++) {
+      if (str.charAt(i) == char) {
+        count++
+      }
+    }
+    console.log(count)
+  }
+
+  getStrCount(str, 'a')
+  getArrCount(arr, 5)
+</script>
+
+</html>

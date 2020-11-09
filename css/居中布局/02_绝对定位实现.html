@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background-color: gray;
+    }
+
+    body {
+      position: relative;
+    }
+
+    .center {
+      height: 150px;
+      width: 150px;
+      background-color: beige;
+      position: absolute;
+
+      /* 上下左右全部为0 */
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+
+      /* 外边距自动填充 */
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 居中布局分为两种：固定/非固定宽高居中对齐
+       其中绝对定位布局适合固定宽高
+  -->
+  <div class="center"></div>
+</body>
+
+</html>

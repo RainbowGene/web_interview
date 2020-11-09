@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    .container {
+      border: 1px solid blueviolet;
+      /* overflow: hidden; */
+    }
+
+    .container div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      margin: 4px;
+      /* float: left; */
+    }
+
+    /* 如果父容器内的所有元素浮动（脱离文档流），导致父容器失去了高度 
+      解决办法： 1. 父元素内 overflow: hidden;
+                2. 父容器的相邻容器使用 clear:both; 原理是在该容器的上边或下边添加足够的清除空间
+                   注意在浮动元素中使用 clear:both; 解决不了问题
+      最好的方案 使用伪类 + clear:both;
+    */
+
+    .hezi {
+      width: 60px;
+      height: 60px;
+      background-color: aqua;
+      /* clear: both; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3" style="float: left;">3</div>
+  </div>
+  <div class="hezi">1</div>
+  <div class="hezi">2</div>
+</body>
+
+</html>

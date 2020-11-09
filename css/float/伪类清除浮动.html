@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      border: 1px solid #7fff00;
+      *zoom: 1;
+    }
+
+    .container div {
+      float: left;
+      width: 60px;
+      height: 60px;
+      background-color: pink;
+      margin: 5px;
+    }
+
+    /* 清除父容器浮动塌陷 */
+    .container::after {
+      display: table;
+      content: '';
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+  </div>
+</body>
+
+</html>

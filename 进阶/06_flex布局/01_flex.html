@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>flex</title>
+  <style>
+    /* 任意容器都可以被指定为 flex 布局，其中元素可以遵循flex的布局设置 */
+    .container{
+      display: flex;
+    }
+    /* 容器上6种属性
+        1)flex-direction : row(水平方向，从左往右) | row-reverse | column | column-reverse
+        
+        2)flex-wrap: nowrap | wrap | wrap-reverse;
+          nowrap:不换行，元素尺寸被调整
+          wrap: 元素尺寸超出换行,第一行在上方
+          wrap-reverse:元素尺寸超出换行,第一行在下方
+
+        3)flex-flow:: <flex-direction> || <flex-wrap>; 1)和2)的简写形式
+
+        4)justify-content:: flex-start | flex-end | center | space-between | space-around; 水平方向的对齐方式
+          对齐方式: 左 | 右 | 居中 | 元素间间隔相等 | 两侧间隔相等
+        
+        5)align-items: flex-start | flex-end | center | baseline | stretch;  垂直方向的对齐方式
+           默认值为 stretch 即如果元素未设置高度或者设为 auto，将占满整个容器的高度。
+           flex-start:起点对齐，紧靠容器上方  flex-start:终点对齐，紧靠容器下方
+           center : 居中对齐   baseline:元素的第一行文字的基线对齐
+
+        6)align-content: 多根轴线的对齐方式  容器内元素只有一行（可能为元素过少或者flex-wrap:nowrap）无效果
+          align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+          
+      元素上的6中属性
+          1)order: 数值， 数值越小，该元素排列越靠前
+          2)flex-basis :  <length> | auto（默认值）; 设置后元素宽度失效，需要
+            和flex-grow、flex-shrink配合使用
+
+          3)flex-grow:定义元素的放大比例，默认值为0,即不放大
+            当元素以flex-basis值排列后，flex-grow发挥作用
+            如果所有元素的 flex-grow 属性都为 1，则它们将等分剩余空间。(如果有的话)
+            如果一个元素的 flex-grow 属性为 2，其他元素都为 1，则前者占据的剩余空间将比其他项多一倍。
+
+          4)flex-shrink: 定义了元素的缩小比例
+            所有元素以 flex-basis 的值排列完后发现空间不够了，且 flex-wrap：nowrap 时，此时 flex-grow 则不起作用了
+             flex-shrink: <number>;默认值: 1，即如果空间不足，该元素将缩小，负值对该属性无效。
+            如果所有元素的 flex-shrink 属性都为 1，当空间不足时，都将等比例缩小。
+            如果一个元素的 flex-shrink 属性为 0，其他元素都为 1，则空间不足时，前者不缩小。
+
+          5)flex:flex-grow, flex-shrink 和 flex-basis的简写
+
+          6)align-self: 允许单个元素有与其他项目不一样的对齐方式
+              align-self: auto | flex-start | flex-end | center | baseline | stretch;
+              与  align-items（针对容器） 属性一样，它是针对元素的
+          
+     */
+  </style>
+</head>
+<body>
+  <div class="container">
+
+  </div>
+</body>
+</html>

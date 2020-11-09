@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>display</title>
+  <style>
+    .container .inline {
+      display: inline;
+      /* 内联标签：不会独占一行 */
+    }
+
+    .container .block {
+      display: block;
+      /* 块级标签：独占一行 */
+    }
+
+    .container .inline-block {
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <p>这波是</p>
+    <!--默认是 block-->
+    <p class="inline">肉蛋葱鸡</p>
+    <p class="inline">肉蛋葱鸡</p>
+    <p>大荒星陨</p>
+
+    <hr>
+
+    <span class="block">起飞</span>
+    <span>芜湖</span>
+    <span>起飞</span>
+
+    <hr>
+
+    <p>我是默认块级</p>
+    <p class="inline-block">我被改成inline-block</p>
+    <p class="inline-block">我也被改成inline-block</p>
+    <!-- 发现：p标签 display: inline-block; 保留了默认的内边距, display: inline; 则无内边距 -->
+
+    <hr>
+
+    <span class="inline-block">我被改成inline-block</span>
+    <span class="inline-block">我也被改成inline-block</span>
+    <span>起飞</span>
+    <!-- 表现与 span本身是 inline 表现无异 -->
+  </div>
+</body>
+
+</html>
