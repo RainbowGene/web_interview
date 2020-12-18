@@ -1,13 +1,13 @@
+/**
+ * class 版本的 Promise 手写
+ */
 
-(function (window) {
-  const PENDING = 'pending'
-  const RESOLVED = 'resolved'
-  const REJECTED = 'rejected'
+const PENDING = 'pending'
+const RESOLVED = 'resolved'
+const REJECTED = 'rejected'
 
-  /**
-   * @param {} excutor 执行器函数
-   */
-  function Promise(excutor) {
+class Promise {
+  constructor(excutor) {
     // 将当前Promise对象保存
     const self = this
     // 内部属性
@@ -52,15 +52,7 @@
     }
   }
 
-
-  /**
-   * Promise 原型对象的 then 方法：
-   *    (1)指定成功和失败的回调函数
-   *    (2)返回一个新的Promise对象
-   * @param {*} onResolved 
-   * @param {*} onRejected 
-   */
-  Promise.prototype.then = function (onResolved, onRejected) {
+  then(onResolved, onRejected) {
     const self = this;
 
     // 指定默认失败的回调 实现 错误/异常穿透
@@ -120,22 +112,12 @@
     })
   }
 
-  /**
-   * Promise 原型对象的 catch 方法
-   *    (1)指定失败的回调函数
-   *    (2)返回一个新的Promise对象
-   * @param {*} onResolved 
-   * @param {*} onRejected 
-   */
-  Promise.prototype.catch = function (onRejected) {
+  catch(onRejected) {
     return this.then(undefined, onRejected)
   }
 
-  /**
-   * Promise 函数对象resolve: 返回指定结果的一个成功的Promise,这个结果不知道是成功与否
-   * @param {*} value 
-   */
-  Promise.resolve = function (value) {
+  // static 给类对象添加方法 ， 不加就是给实例对象添加方法
+  static resolve(value) {
     return new Promise((resolve, reject) => {
       if (value instanceof Promise) {  // 是Promise对象:要判断/使用这个对象的结果
         value.then(resolve, reject)
@@ -146,21 +128,13 @@
     })
   }
 
-  /**
-   * Promise 函数对象 reject ：返回指定reason的一个失败的Promise
-   * @param {*} value 
-   */
-  Promise.reject = function (reason) {
+  static reject(reason) {
     return new Promise((resolve, reject) => {
       reject(reason)  // 只有失败一种情况
     })
   }
 
-  /**
-   * Promise 函数对象 all : 返回一个 Promise ，只要有一个失败就失败，全部执行成功才返回成功
-   * @param {Array} promises : Promise对象或其他值组成的数组
-   */
-  Promise.all = function (promises) {
+  static all(promises) {
     const values = new Array(promises.length)  // 保存所有成功数据的数组
     let resolvedCount = 0 // 成功数量计数
     return new Promise((resolve, reject) => {
@@ -183,11 +157,7 @@
     })
   }
 
-  /**
-   * Promise 函数对象 race : 返回的Promise为第一个完成的Promise
-   * @param {Array} promises : Promise对象或其他值组成的数组
-   */
-  Promise.race = function (promises) {
+  static race(promises) {
     return new Promise((resolve, reject) => {
       promises.forEach((p, index) => {
         Promise.resolve(p).then(
@@ -201,12 +171,7 @@
     })
   }
 
-  /**
-   * 自定义拓展方法: resolveDelay() / rejectDelay() 延迟指定时间 成功(与否)/失败
-   */
-
-  // 指定时间成功或者失败（由结果决定）
-  Promise.resolveDelay = function (value, time) {
+  static resolveDelay(value, time) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (value instanceof Promise) {  // 是Promise对象:要判断/使用这个对象的结果
@@ -219,15 +184,11 @@
     })
   }
 
-  // 指定时间失败
-  Promise.rejectDelay = function (reason, time) {
+  static rejectDelay(reason, time) {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         reject(reason)  // 只有失败一种情况
       }, time)
     })
   }
-
-  // 向外暴露
-  window.Promise = Promise
-})(window)
+}
