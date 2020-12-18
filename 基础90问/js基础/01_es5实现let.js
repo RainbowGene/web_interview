@@ -19,10 +19,7 @@ console.log(i) // 没有定义 i 报错
  * let和const 形成块级作用域
  * var 可以声明同名变量
  * let 和 const 不能在声明前使用
- *
+ * 
  *   babel 转化只实现了 2.3.5
  */
-
-
-
 

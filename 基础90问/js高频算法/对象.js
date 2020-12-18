@@ -40,7 +40,6 @@ Object.ObjectCreate = (proto, propertiesObject) => {
   return result;
 }
 
-
 /**
  * Object.assign(target,source1,...,sourceN)
  *   用处：将源对象的所有可枚举属性复制到目标对象（浅拷贝）

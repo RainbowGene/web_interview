@@ -117,3 +117,13 @@ var pow3 = my_pow(3)
 
 console.log(pow2(5))
 console.log(pow3(4))
+
+
+// 无关内容:循环打印
+var i = 0
+for (let i = 0; i < 5; i++) {
+  setTimeout(() => {
+    console.log(i + 1)
+  }, 1000 * (i + 1));
+}
+console.log(i)

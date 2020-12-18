@@ -9,7 +9,7 @@ function vue() {
 
 // 注册 get() set()
 vue.prototype.observer = function (obj) {
-  /* defineProperty
+  // defineProperty
   var value;
   var self = this;
   for (const item in obj) {
@@ -30,19 +30,18 @@ vue.prototype.observer = function (obj) {
       })
     }
   }
-  */
 
   // proxy 代理实现
-  let self = this;
-  this.$data = new Proxy(this.$data, {
-    get: function (target, key) {
-      return target[key]
-    },
-    set: function (target, key, newvalue) {
-      target[key] = newvalue
-      self.render()
-    }
-  })
+  // let self = this;
+  // this.$data = new Proxy(this.$data, {
+  //   get: function (target, key) {
+  //     return target[key]
+  //   },
+  //   set: function (target, key, newvalue) {
+  //     target[key] = newvalue
+  //     self.render()
+  //   }
+  // })
 }
 
 vue.prototype.render = function () {
@@ -96,7 +95,7 @@ function patchVnode(oldVnode, vnode) {
   // 分别拿出新老节点的子元素
   let i, oldCh = oldVnode.children, ch = vnode.children;
   if (oldVnode === vnode) return; // 相同则不操作
-  
+
   // 分情况操作：1.文字节点改变  2. 增/删/改 子元素
   if (oldVnode.text !== null && vnode.text !== null && oldVnode.text !== vnode.text) {// 比对文字节点
     api.setTextContent(el, vnode.text)
