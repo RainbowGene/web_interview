@@ -59,31 +59,51 @@
     //#endregion
 
     //#region Promise 一般测试
-    new Promise((resolve, reject) => {
-      setTimeout(() => {
-        const time = (new Date).getTime()
-        console.log('create', time);
-        if (time % 2 !== 0) resolve(time)
-        reject(time)
-      }, 1000)
-    }).then(value => {
-      console.log('then1:', value);
-      // return Promise.resolve(2)
-      // return 2  // return 出一般值能被后续的 then 接收
-      throw 2 // 如果后续 then 没有错误回调（即没有定义第二个方法） 错误会穿透后续的 then 直接到 catch
-    }).then(value => {
-      console.log('then2', value);
-    }, reason => {
-      console.log('then2 reason', reason);
-    }).catch(err => {
-      console.log('catch:', err);
-    })
+    // new Promise((resolve, reject) => {
+    //   setTimeout(() => {
+    //     const time = (new Date).getTime()
+    //     console.log('create', time);
+    //     if (time % 2 !== 0) resolve(time)
+    //     reject(time)
+    //   }, 1000)
+    // }).then(value => {
+    //   console.log('then1:', value);
+    //   // return Promise.resolve(2)
+    //   // return 2  // return 出一般值能被后续的 then 接收
+    //   throw 2 // 如果后续 then 没有错误回调（即没有定义第二个方法） 错误会穿透后续的 then 直接到 catch
+    // }).then(value => {
+    //   console.log('then2', value);
+    // }, reason => {
+    //   console.log('then2 reason', reason);
+    // }).catch(err => {
+    //   console.log('catch:', err);
+    // })
 
     // 发现： 第一次发生 reject(time) 时，错误穿透遇到了第二个then中的错误处理（这个then定义了错误回调）
     //        并且被捕获执行，并没有一直穿入到 catch
     //#endregion
 
+    //#region all/race 测试
+    const p1 = Promise.resolve(1)
+    const p2 = Promise.resolve(2)
+    const p3 = Promise.resolve(3)
+    const pAll = Promise.all([p1, p2, p3])
+    pAll.then(value => {
+      console.log('then:', value); // 如果将p3 reject 改为 resolve 打印结果 : [1,2,3]
+    }).catch(reason => {
+      console.log('catch', reason); // p3这个错了, 打印 3
+    })
 
+    // const pRace = Promise.race([p3, 4, p2, p1])
+    // pRace.then(value => {
+    //   console.log('then:', value); // 打印 ： 4  一般值
+    //   throw 2
+    // }, reason => {
+    //   console.log('reason:', reason);
+    // }).catch(reason => {
+    //   console.log('catch', reason); // catch 2
+    // })
+    //#endregion
   </script>
 </body>
 

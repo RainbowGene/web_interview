@@ -160,17 +160,47 @@
 
   /**
    * Promise 函数对象 all : 返回一个 Promise ，只要有一个失败就失败，全部执行成功才返回成功
-   * @param {Array} promises : Promise对象组成的数组
+   * @param {Array} promises : Promise对象或其他值组成的数组
    */
   Promise.all = function (promises) {
+    const values = new Array(promises.length)  // 保存所有成功数据的数组
+    let resolvedCount = 0 // 成功数量计数
+    return new Promise((resolve, reject) => {
+      promises.forEach((p, index) => {
+        Promise.resolve(p).then(  // 由于p可能不是Promise对象而是一般值：①使用instance判断 ②Promise.resolve(p)包裹
+          value => {
+            resolvedCount++;
+            // 所有成功才能 resolve, 而且按promises 的顺序 push
+            values[index] = value // 这样才不会导致先成功的先push
 
+            // 全部成功 
+            if (resolvedCount === promises.length) {
+              resolve(values)
+            }
+          },
+          reason => { // 一个失败全部GG
+            reject(reason)  // 因为状态只能改一次，这个Promise的结果不会被后来的覆盖
+          })
+      })
+    })
   }
+
   /**
    * Promise 函数对象 race : 返回的Promise为第一个完成的Promise
-   * @param {Array} promises : Promise对象组成的数组
+   * @param {Array} promises : Promise对象或其他值组成的数组
    */
   Promise.race = function (promises) {
-
+    return new Promise((resolve, reject) => {
+      promises.forEach((p, index) => {
+        Promise.resolve(p).then(
+          value => { // 一旦有成功，直接返回该Promise
+            resolve(value)
+          },
+          reason => {
+            reject(reason)
+          })
+      })
+    })
   }
 
   // 向外暴露
