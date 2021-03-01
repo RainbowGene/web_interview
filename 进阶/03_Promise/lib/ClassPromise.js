@@ -145,7 +145,7 @@ class Promise {
             // 所有成功才能 resolve, 而且按promises 的顺序 push
             values[index] = value // 这样才不会导致先成功的先push
 
-            // 全部成功 
+            // 全部成功
             if (resolvedCount === promises.length) {
               resolve(values)
             }

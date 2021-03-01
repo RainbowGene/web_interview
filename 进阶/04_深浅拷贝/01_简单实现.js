@@ -59,9 +59,6 @@ const cloneObj = JSON.parse(JSON.stringify(originObj));
 console.log(cloneObj); // {name: "axuebin"}
 
 // * 对象中有函数，不要用方法一
-
-
-
 // 使用递归: 就是对每层数据都 创建->赋值
 function deepClone(source) {
   const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
@@ -88,3 +85,19 @@ const cloneObj = deepClone(originObj);
 console.log(cloneObj); // {name: "axuebin", sayHello: ƒ} 函数也拷贝到了
 
 
+
+// 简单实现深拷贝
+function deepClone(source) {
+  const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+  for (let keys in source) { // 遍历目标
+    if (source.hasOwnProperty(keys)) {
+      if (source[keys] && typeof source[keys] === 'object') { // 如果值是对象，就递归一下
+        targetObj[keys] = source[keys].constructor === Array ? [] : {};
+        targetObj[keys] = deepClone(source[keys]);
+      } else { // 如果不是，就直接赋值
+        targetObj[keys] = source[keys];
+      }
+    }
+  }
+  return targetObj;
+}

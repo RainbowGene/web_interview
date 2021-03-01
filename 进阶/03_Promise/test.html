@@ -10,8 +10,22 @@
 <body>
 
   <!-- <script src="./lib/Promise.js"></script> -->
-  <script src="./lib/ClassPromise.js"></script>
+  <!-- <script src="./lib/ClassPromise.js"></script> -->
+  <script src="./lib/myPromise.js"></script>
   <script>
+    //#region 
+    // new Promise((resolve, reject) => {
+    //   resolve(2)
+    // }).then(value => {
+    //   console.log('value:', value);
+    //   return Promise.resolve(4)
+    // }, reason => {
+    //   console.log('reason:', reason);
+    // }).then(value => {
+    //   console.log('value2:', value);
+    // })
+    //#endregion
+
     //#region 测试
     // new Promise((resolve, reject) => {
     //   setTimeout(() => {
@@ -50,7 +64,7 @@
 
     //#endregion
 
-    //#region  Promise.resolve()/reject() 测试
+    //#region Promise.resolve()/reject() 测试
     // const p1 = Promise.resolve(1)  // p1成功，接收的一般值，.then 回调接收的就是这个一般值
     // const p2 = Promise.resolve(Promise.resolve(2)) // 成功，p2 接收的是一个成功的Promise对象， .then接收到的就是这个成功Promise的值
     // const p3 = Promise.resolve(Promise.reject(3)) // 失败，reason是这个失败Promise的reason
@@ -85,36 +99,36 @@
     //#endregion
 
     //#region all/race 测试
-    // const p1 = Promise.resolve(1)
-    // const p2 = Promise.resolve(2)
-    // const p3 = Promise.resolve(3)
-    // const pAll = Promise.all([p1, p2, p3])
-    // pAll.then(value => {
-    //   console.log('then:', value); // 如果将p3 reject 改为 resolve 打印结果 : [1,2,3]
-    // }).catch(reason => {
-    //   console.log('catch', reason); // p3这个错了, 打印 3
-    // })
+    const p1 = Promise.resolve(1)
+    const p2 = Promise.resolve(2)
+    const p3 = Promise.resolve(3)
+    const pAll = Promise.all([p1, p2, p3])
+    pAll.then(value => {
+      console.log('then:', value); // 如果将p3 reject 改为 resolve 打印结果 : [1,2,3]
+    }).catch(reason => {
+      console.log('catch', reason); // p3这个错了, 打印 3
+    })
 
-    // const pRace = Promise.race([p3, 4, p2, p1])
-    // pRace.then(value => {
-    //   console.log('then:', value); // 打印 ： 4  一般值
-    //   throw 2
-    // }, reason => {
-    //   console.log('reason:', reason);
-    // }).catch(reason => {
-    //   console.log('catch', reason); // catch 2
-    // })
+    const pRace = Promise.race([p3, 4, p2, p1])
+    pRace.then(value => {
+      console.log('then:', value); // 打印 ： 4  一般值
+      throw 2
+    }, reason => {
+      console.log('reason:', reason);
+    }).catch(reason => {
+      console.log('catch', reason); // catch 2
+    })
     //#endregion
 
     //#region 
-    const p1 = Promise.resolveDelay(66, 2000)
-    const p2 = Promise.rejectDelay(77, 3000)
-    p1.then(value => {
-      console.log('p6', value);
-    })
-    p2.catch(err => {
-      console.log('p7', err);
-    })
+    // const p1 = Promise.resolveDelay(66, 2000)
+    // const p2 = Promise.rejectDelay(77, 3000)
+    // p1.then(value => {
+    //   console.log('p6', value);
+    // })
+    // p2.catch(err => {
+    //   console.log('p7', err);
+    // })
     //#endregion
   </script>
 </body>

@@ -64,7 +64,7 @@
 // console.log(arr.lastIndexOf(2)) // 5
 
 // 2 对象
-let s = "Clycle Gene"
+// let s = "Clycle Gene"
 // console.log(s.charAt(0)) //C
 // console.log(s.charCodeAt(0)) //67 Unicode 编码
 // console.log(s.indexOf('c')) // 存在c返回第一次出现的下标，不存在返回 -1
@@ -128,8 +128,8 @@ let s = "Clycle Gene"
 // console.log(map(arr))
 //#endregion
 
-function a(a) {
-  a ^= (1 << 4) - 1;
-  return a;
+
+var my_data = { a: 'Ape', b: 'Banana', c: 'Citronella' };
+for (var key in my_data) {
+  console.log(key);
 }
-console.log(a(10))
